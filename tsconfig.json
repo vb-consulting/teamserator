@@ -1,0 +1,29 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+
+    "include": ["frontend/*", "frontend/**/*"],
+    "exclude": [
+        "backend/*",
+        "http/*",
+        "logs/*",
+        "scripts/*",
+        "node_modules/*",
+        "__sapper__/*",
+        "public/*",
+        "wwwroot/*",
+        ".vscode/*",
+        ".vs/*",
+    ],
+
+    "compilerOptions": {
+        "target": "es2015",
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "paths": {
+            "$lib/*": ["front/app/lib/*"],
+            "$api/*": ["front/app/api/*"],
+            "$part/*": ["front/app/part/*"],
+        }
+    }
+}

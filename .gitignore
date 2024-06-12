@@ -128,3 +128,16 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# ignore local config files
+*-local*
+*local-*
+
+# wwwroot if front end build directory
+wwwroot
+
+# scrap scripts
+scrap
+
+# ignore build id header file
+appsettings-build-id-header.json

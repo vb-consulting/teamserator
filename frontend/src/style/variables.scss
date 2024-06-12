@@ -1,0 +1,21 @@
+﻿
+$enable-grid-classes: true;
+$enable-gradients: true;
+$enable-shadows: true;
+$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+
+@import "../../../node_modules/bootstrap/scss/functions";
+
+//$border-radius: .4rem;
+$border-radius: 0.15rem;
+$border-radius-sm: 0.15rem;
+$border-radius-lg: 0.15rem;
+$border-radius-xl: 0.15rem;
+$border-radius-xxl: 0.15rem;
+
+//$primary: #002538;
+$primary: #0072a3;
+
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/mixins";
