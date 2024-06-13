@@ -29,5 +29,7 @@ module.exports = {
 
     historyTableName: "history",
     historyTableSchema: "sys",
-    skipPattern: "scrap"
+    skipPattern: "scrap",
+    
+    testFunctionsSchemaContains: "test",
 }

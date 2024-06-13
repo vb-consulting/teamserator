@@ -11,7 +11,7 @@
 //
 // comment on function pages.admin is 'HTTP GET /admin
 // Content-Type: text/html
-// anonymous';
+// requires-authorization admin';
 GET {{host}}/admin?userId=ABC&userName=XYZ&userRoles=IJK&userRoles=ABC&userRoles=XYZ&permissions=ABC&permissions=XYZ&permissions=IJK&headers=%7B%7D
 
 ###
@@ -27,7 +27,7 @@ GET {{host}}/admin?userId=ABC&userName=XYZ&userRoles=IJK&userRoles=ABC&userRoles
 //
 // comment on function pages.index is 'HTTP GET /
 // Content-Type: text/html
-// anonymous';
+// allow-anonymous';
 GET {{host}}/?userId=ABC&userName=XYZ&userRoles=IJK&userRoles=ABC&userRoles=XYZ&permissions=ABC&permissions=XYZ&permissions=IJK&headers=%7B%7D
 
 ###

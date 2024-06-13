@@ -4,17 +4,17 @@ language plpgsql
 as 
 $$
 declare 
-    _db         constant text = 'teamserator_db';
-    _sys_schema constant text = 'sys';
-    _user       constant text = 'teamserator_usr';
-    _rec        record;
+    _db             constant text = 'teamserator_db';
+    _test_schema    constant text = 'test';
+    _user           constant text = 'teamserator_usr';
+    _rec            record;
 begin
     if (current_database() <> _db) then
         raise exception 'Database name must be "%" but it is %. Are you sure you are connected to the right database?', _db, current_database();
     end if;
 
-    if not exists(select 1 from information_schema.schemata where schema_name = _sys_schema) then
-        raise exception 'Schema "%" does not exist. This schema is created by the migration tool. Run migrations or create the schema manually and try again.', _sys_schema;
+    if not exists(select 1 from information_schema.schemata where schema_name = _test_schema) then
+        execute format('create schema %s', _test_schema);
     end if;
 
     select * into _rec from pg_roles where rolname = _user;

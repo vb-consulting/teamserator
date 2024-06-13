@@ -123,6 +123,22 @@ The directory structure:
 
 ## Installation 
 
+> IMPORTANT NOTE:
+> 
+> [npgsqlrest](https://www.npmjs.com/package/npgsqlrest) currenlty can only be installed **only on Windows-64 and Linux-64 machines**. The Mac OS builds are missing because I don't have a Mac machine. 
+> 
+> If someone could help me out with this I'd be grateful. 
+> Sorry Mac bros.
+
+> IMPORTANT NOTE 2:
+>
+> [`@vbilopav/pgmigrations`](https://www.npmjs.com/package/@vbilopav/pgmigrations) tool spawns `psql` or `pg_dump` external processes to execute database commands. That means, that PostgreSQL client tools must be installed on the system to be able to use this package. PostgreSQL client tools are distributed with the default installation so most likely you already have them pre-installed.
+>
+> If you don't, there is an option to install client tools only:
+> - On Linux systems, there is a `postgresql-client` package, the apt installation would be then: `$ apt-get install -y postgresql-client` for the latest version.
+> - On Windows systems, there is an option to install client tools only in the official installer.
+
+
 To install and run the source code on your local machine you will have to have super-user access to the PostgreSQL instance at least 16 or higher. Either local or remote or containerized, doesn't matter, it only needs to be 16 or higher and the access user has to have super-user privileges.
 
 Steps:
@@ -172,7 +188,7 @@ Default configuration `pgmigrations` configuration file  `/backend/cfg/pgmigrati
 
 You can override these values with local, git ignored configuration. Create `/backend/cfg/pgmigrations-local.js` file with the following content:
 
-```js
+```javascript
 module.exports = {
     host: "localhost",
     port: "5432",
