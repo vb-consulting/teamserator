@@ -1,0 +1,33 @@
+name: build-and-test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install PosgtreSQL
+      uses: vb-consulting/postgresql-action@v1
+      with:
+        postgresql version: '16'  # See https://hub.docker.com/_/postgres for available versions
+        postgresql user: 'postgres'
+        postgresql password: 'postgres'
+    - uses: actions/checkout@v2
+    - name: Frontend Build
+      run: |
+        npm install
+        npm run build
+    - name: Create Default Database
+      run: PGPASSWORD=postgres psql --host=localhost --port=5432 --dbname=postgres --username=postgres --command "create database teamserator_db;"
+    - name: Create Default Application User
+      run: PGPASSWORD=postgres psql --host=localhost --port=5432 --dbname=postgres --username=postgres --command "create role teamserator_usr with login password 'teamserator_usr';"
+    - name: Run Database Migrations
+      run: PGPASSWORD=postgres PGUSER=postgres npm run db-up
+    - name: Run Tests
+      run: PGPASSWORD=postgres PGUSER=postgres npm run db-test

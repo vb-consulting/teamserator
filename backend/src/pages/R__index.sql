@@ -45,11 +45,15 @@ select sys.annotate('pages.index',
 );
 
 create or replace function test.pages_index_has_user_script() 
-returns text language sql as $$
-select case 
-    when position('<script>user = JSON.parse(''{"id" : null, "name" : null, "roles" : [], "permissions" : []}'');</script>' in pages.index()) > 0 
-    then 'ok' 
-    else 'not ok: user script not found in pages.admin()' 
+returns text 
+language sql 
+as 
+$$
+select 
+    case 
+        when position('<script>user = JSON.parse(''{"id" : null, "name" : null, "roles" : [], "permissions" : []}'');</script>' in pages.index()) > 0 
+        then 'ok' 
+        else 'not ok: user script not found in pages.admin()' 
     end
 $$;
 

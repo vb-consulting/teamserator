@@ -1,6 +1,11 @@
 
 # The Teamserator (Full of Agile)
 
+[![build-and-test](https://github.com/vb-consulting/teamserator/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/vb-consulting/teamserator/actions/workflows/build-and-test.yml)
+![License](https://img.shields.io/badge/license-MIT-green)
+![GitHub Stars](https://img.shields.io/github/stars/vb-consulting/teamserator?style=social)
+![GitHub Forks](https://img.shields.io/github/forks/vb-consulting/teamserator?style=social)
+
 Project Management System Where the Entire Backend is Implemented as PostgreSQL User-Defined Functions
 
 ## What is this?
