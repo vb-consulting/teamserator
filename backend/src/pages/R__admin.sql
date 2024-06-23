@@ -1,5 +1,5 @@
-select sys.check();
-select sys.drop('pages.admin');
+call sys.check();
+call sys.drop('pages.admin');
 
 create function pages.admin(
     _user_id text = null,
@@ -38,10 +38,10 @@ select format($html$<!DOCTYPE html>
 );
 $$;
 
-select sys.annotate('pages.admin', 
+call sys.annotate('pages.admin', 
     'HTTP GET /admin', 
     'Content-Type: text/html', 
-    'requires-authorization admin'
+    'allow-anonymous'
 );
 
 create or replace function test.pages_admin_has_user_script() 

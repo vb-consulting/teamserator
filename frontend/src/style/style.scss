@@ -50,9 +50,15 @@
 // Icons
 @import "../../../node_modules/bootstrap-icons/font/bootstrap-icons";
 
+
+
 //
 // custom styles
 //
+.sidebar-main {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+}
 .fs-smaller {
     font-size: smaller;
 }

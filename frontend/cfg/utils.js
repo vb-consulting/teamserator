@@ -25,7 +25,7 @@ function exec(cmd) {
     });
 }
 
-function cpy(from, to) {
+function cpy(from, to, parseHtml) {
     if (!fs.existsSync(from)) {
         error(`ERROR: Could not find file '${from}'`);
         return;
@@ -34,7 +34,15 @@ function cpy(from, to) {
         fs.mkdirSync(path.dirname(to), { recursive: true });
     }
     info(`${from} → ${to}...`);
-    fs.copyFileSync(from, to);
+    if (parseHtml && from.endsWith('.html')) {
+        var rnd = (Math.random() + 1).toString(36).substring(2);
+        let content = fs.readFileSync(from, 'utf8').replace(/\.css"|\.js"/g, function(match) {
+            return match.replace('"', `?${rnd}"`);
+        });
+        fs.writeFileSync(to, content);
+    } else {
+        fs.copyFileSync(from, to);
+    }
 }
 
 module.exports = {

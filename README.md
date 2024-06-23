@@ -109,13 +109,13 @@ The directory structure:
 - `scss` - build styles only.
 - `scss-watch` - build styles only with map files and watch for changes.
 - `data` - open the backend source directory with the azuredatastudio (recommended).
-- `db-up` - run database migrations up.
-- `db-up-list` - list available database migrations.
-- `db-up-dump` - dump migration up a script to the console.
-- `db-history` - see the history of the migration.
-- `db-test` - run the tests.
-- `db-test-list` - see the available tests.
-- `db-schema` - dump the entire database schema to the console.
+- `up` - run database migrations up.
+- `up-list` - list available database migrations.
+- `up-dump` - dump migration up a script to the console.
+- `history` - see the history of the migration.
+- `test` - run the tests.
+- `test-list` - see the available tests.
+- `schema` - dump the entire database schema to the console.
 - `psql` - enter psql interactive mode.
 
 ## Configuration
@@ -145,6 +145,8 @@ The directory structure:
 
 
 To install and run the source code on your local machine you will have to have super-user access to the PostgreSQL instance at least 16 or higher. Either local or remote or containerized, doesn't matter, it only needs to be 16 or higher and the access user has to have super-user privileges.
+
+NOTE: Check out the [GitHub Action CI/CD Pipeline YML file](https://github.com/vb-consulting/teamserator/blob/master/.github/workflows/build-and-test.yml) for help with your local installation. 
 
 Steps:
 
@@ -205,7 +207,17 @@ module.exports = {
 
 And override and configure as you need.
 
-5) Run migrations up: `npm run db-up`
+But you can also use the [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) on Linux like this:
+
+```console
+$ PGPASSWORD=postgres PGUSER=postgres npm run up
+```
+
+```console
+$ PGPASSWORD=postgres PGUSER=postgres npm run test
+```
+
+5) Run migrations up: `npm run up`
 
 6) Run build to build static files (JS and CSS in the `wwwroot`): `npm run build`
 

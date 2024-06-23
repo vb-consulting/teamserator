@@ -21,9 +21,9 @@
         "forceConsistentCasingInFileNames": true,
         "baseUrl": ".",
         "paths": {
-            "$lib/*": ["front/app/lib/*"],
-            "$api/*": ["front/app/api/*"],
-            "$part/*": ["front/app/part/*"],
+            "$lib/*": ["frontend/src/app/lib/*"],
+            "$api/*": ["frontend/src/app/api/*"],
+            "$part/*": ["frontend/src/app/part/*"],
         }
     }
 }

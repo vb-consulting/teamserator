@@ -18,11 +18,19 @@ Note: if no page is provided, all TypeScript files in front/ will be compiled.
 ***********************************************/
 const fs = require("fs");
 const path = require("path");
-const { exec, error, log } = require("./utils");
-const { srcDir, rootPath, styleName, styleDir, rollup, buildIdCustomHeaderConfigFile } = require("./config");
-const ts = ".ts";
+const { exec, error, log, info, cpy } = require("./utils");
+const { 
+    srcDir, 
+    assetsDir,
+    rootPath, 
+    styleName, 
+    styleDir, 
+    rollup, 
+    buildIdCustomHeaderConfigFile 
+} = require("./config");
 
 const args = process.argv.slice(2);
+const ts = ".ts";
 
 let page = "";
 let watch = false;
@@ -80,7 +88,26 @@ if (!style) {
         if (!fs.existsSync(rootPath)) {
             log("Creating dir " + rootPath + " ...");
             fs.mkdirSync(rootPath);
+        } else {
+            fs.rmSync(rootPath, { recursive: true, force: true });
+            log("Creating dir " + rootPath + " ...");
+            fs.mkdirSync(rootPath);
         }
+
+        function copyAssets(dir) {
+            let files = fs.readdirSync(dir);
+            for(let i = 0; i < files.length; i++) {
+                let file = path.join(dir, files[i]);
+                if (fs.statSync(file).isDirectory()){
+                    copyAssets(file);
+                } else {
+                    let destPath = path.join(rootPath, path.relative(assetsDir, dir));
+                    let dest = path.join(destPath, files[i]);
+                    cpy(file, dest, true);
+                }
+            }
+        }
+        copyAssets(assetsDir);
 
         let files = fs.readdirSync(srcDir);
         for (let i = 0; i < files.length; i++) {

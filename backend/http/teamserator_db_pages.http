@@ -11,7 +11,7 @@
 //
 // comment on function pages.admin is 'HTTP GET /admin
 // Content-Type: text/html
-// requires-authorization admin';
+// allow-anonymous';
 GET {{host}}/admin?userId=ABC&userName=XYZ&userRoles=IJK&userRoles=ABC&userRoles=XYZ&permissions=ABC&permissions=XYZ&permissions=IJK&headers=%7B%7D
 
 ###

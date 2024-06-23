@@ -1,5 +1,5 @@
-select sys.check();
-select sys.drop('pages.index');
+call sys.check();
+call sys.drop('pages.index');
 
 create function pages.index(
     _user_id text = null,
@@ -38,7 +38,7 @@ select format($html$<!DOCTYPE html>
 );
 $$;
 
-select sys.annotate('pages.index', 
+call sys.annotate('pages.index', 
     'HTTP GET /', 
     'Content-Type: text/html', 
     'allow-anonymous'
