@@ -27,6 +27,11 @@ begin
 
     call sys.check();
 
+    if (select current_setting('TimeZone') != 'UTC') then
+        alter database teamserator_db set timezone to 'UTC';
+        set time zone 'UTC';
+    end if;
+
     if not exists(select 1 from information_schema.routines where routine_schema = 'sys' and routine_name = 'drop') then
         -- # import ./backend/src/sys/sys.drop.sql
     end if;

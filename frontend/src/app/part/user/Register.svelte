@@ -38,7 +38,7 @@
         bind:value={pass}
         on:keydown={() => alert = false}>
     <label for="register-repeat">Repeat password</label>
-    <input type="repeat"
+    <input type="password"
         id="register-repeat"
         autocomplete="off"
         autocorrect="off"

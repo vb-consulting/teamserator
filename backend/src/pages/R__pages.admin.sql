@@ -1,7 +1,7 @@
 call sys.check();
-call sys.drop('pages.index');
+call sys.drop('pages.admin');
 
-create function pages.index(
+create function pages.admin(
     _user_id text = null,
     _user_name text = null, 
     _user_roles text[] = null,
@@ -21,9 +21,9 @@ select format($html$<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
     <link href="/style.css?%1$s" rel="stylesheet" />
-    <link href="index.css?%1$s" rel="stylesheet" />
+    <link href="admin.css?%1$s" rel="stylesheet" />
     <script>user = JSON.parse('%2$s');</script>
-    <script defer src="index.js"></script>
+    <script defer src="admin.js"></script>
 </head>
 <body>
 </body>
@@ -38,23 +38,20 @@ select format($html$<!DOCTYPE html>
 );
 $$;
 
-call sys.annotate('pages.index', 
-    'HTTP GET /', 
+call sys.annotate('pages.admin', 
+    'HTTP GET /admin', 
     'Content-Type: text/html', 
     'allow-anonymous'
 );
 
-create or replace function test.pages_index_has_user_script() 
-returns text 
-language sql 
+create or replace procedure test.pages_admin_has_user_script() 
+language plpgsql
 as 
 $$
-select 
-    case 
-        when position('<script>user = JSON.parse(''{"id" : null, "name" : null, "roles" : [], "permissions" : []}'');</script>' in pages.index()) > 0 
-        then 'ok' 
-        else 'not ok: user script not found in pages.admin()' 
-    end
+begin
+    assert 
+        position('<script>user = JSON.parse(''{"id" : null, "name" : null, "roles" : [], "permissions" : []}'');</script>' in pages.admin()) > 0, 
+        'user script not found in pages.admin()';
+end;
 $$;
-
-select test.pages_index_has_user_script();
+call test.pages_admin_has_user_script();
