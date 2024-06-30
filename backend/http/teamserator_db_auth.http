@@ -1,0 +1,22 @@
+@host=https://localhost:5000
+
+// function auth.register_with_password(
+//     _email text,
+//     _password text,
+//     _repeat text
+// )
+// returns json
+//
+// comment on function auth.register_with_password is 'HTTP POST /auth/register
+// anonymous';
+POST {{host}}/auth/register
+content-type: application/json
+
+{
+    "email": "ABC",
+    "password": "XYZ",
+    "repeat": "IJK"
+}
+
+###
+

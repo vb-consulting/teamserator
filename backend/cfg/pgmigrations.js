@@ -31,5 +31,5 @@ module.exports = {
     historyTableSchema: "sys",
     skipPattern: "scrap",
     
-    testFunctionsSchemaContains: "test",
+    testFunctionsSchemaSimilarTo: "%_tests",
 }

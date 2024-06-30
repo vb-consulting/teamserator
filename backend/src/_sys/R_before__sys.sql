@@ -1,7 +1,6 @@
 do
 $sys$
 begin
-
     if not exists(select 1 from pg_roles where rolname = 'teamserator_usr') then
         -- development application role
         -- for production environment, create a new role with a different password
@@ -22,17 +21,22 @@ begin
     end if;
 
     if not exists(select 1 from information_schema.routines where routine_schema = 'sys' and routine_name = 'check') then
-        -- # import ./backend/src/sys/sys.check.sql
+        -- # import ./backend/src/_sys/sys.check.sql
     end if;
 
     call sys.check();
 
+    if (select current_setting('TimeZone') != 'UTC') then
+        alter database teamserator_db set timezone to 'UTC';
+        set time zone 'UTC';
+    end if;
+
     if not exists(select 1 from information_schema.routines where routine_schema = 'sys' and routine_name = 'drop') then
-        -- # import ./backend/src/sys/sys.drop.sql
+        -- # import ./backend/src/_sys/sys.drop.sql
     end if;
 
     if not exists(select 1 from information_schema.routines where routine_schema = 'sys' and routine_name = 'annotate') then
-        -- # import ./backend/src/sys/sys.annotate.sql
+        -- # import ./backend/src/_sys/sys.annotate.sql
     end if;
 end;
 $sys$;
