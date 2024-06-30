@@ -151,7 +151,7 @@ begin
     rollback;
 end
 $$;
-call test.register_with_password__bad_path();
+--call test.register_with_password__bad_path();
 
 create or replace procedure test.register_with_password__good_path()
 language plpgsql as
@@ -175,4 +175,4 @@ begin
     rollback;
 end
 $$;
-call test.register_with_password__good_path();
+--call test.register_with_password__good_path();

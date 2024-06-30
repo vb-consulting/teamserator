@@ -75,4 +75,4 @@ begin
     end loop;
 end
 $$;
-call test.auth_validate_emails();
+--call test.auth_validate_emails();

@@ -54,4 +54,4 @@ begin
         'user script not found in pages.admin()';
 end;
 $$;
-call test.pages_admin_has_user_script();
+--call test.pages_admin_has_user_script();

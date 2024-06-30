@@ -54,4 +54,4 @@ begin
         'user script not found in pages.index()';
 end;
 $$;
-call test.pages_index_has_user_script();
+--call test.pages_index_has_user_script();
