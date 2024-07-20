@@ -154,7 +154,6 @@ Steps:
 
 ```sql
 create database teamserator_db;
-create role teamserator_usr with login password 'teamserator_usr';
 ```
 
 2) Clone this repository and navigate to the `teamserator` directory:

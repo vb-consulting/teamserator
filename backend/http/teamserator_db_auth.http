@@ -1,5 +1,27 @@
 @host=https://localhost:5000
 
+// function auth.login_with_password(
+//     _email text,
+//     _password text
+// )
+// returns table(
+//     status integer,
+//     name_identifier text,
+//     name text
+// )
+//
+// comment on function auth.login_with_password is 'HTTP POST /auth/login
+// anonymous';
+POST {{host}}/auth/login
+content-type: application/json
+
+{
+    "email": "ABC",
+    "password": "XYZ"
+}
+
+###
+
 // function auth.register_with_password(
 //     _email text,
 //     _password text,
