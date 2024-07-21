@@ -224,6 +224,44 @@ $ PGPASSWORD=postgres PGUSER=postgres npm run test
 
 8) Navigate to the URL.
 
+## Running From Docker
+
+1) Clone this repository and navigate to the `teamserator` directory:
+
+```console
+~$ git clone https://github.com/vb-consulting/teamserator.git
+Cloning into 'teamserator'...
+remote: Enumerating objects: 46, done.
+remote: Counting objects: 100% (46/46), done.
+remote: Compressing objects: 100% (42/42), done.
+remote: Total 46 (delta 3), reused 43 (delta 3), pack-reused 0
+Unpacking objects: 100% (46/46), 78.31 KiB | 1.57 MiB/s, done.
+~$ cd teamserator/
+~/teamserator$
+```
+
+2) Build Docker Image
+
+```console
+docker build --no-cache -t teamserator .
+```
+
+3) Run
+
+On your network on port 5000:
+
+```console
+docker run -i -t -p 5000:5000 --network <your_network> teamserator
+```
+
+On your network on port 5000 and with a specific db host:
+
+```console
+docker run -i -t -p 5000:5000 --network legendea-stack_legendea -e PGHOST='<db-host> teamserator
+```
+
 ## License
 
 This project is licensed under the terms of the MIT license.
+
+
