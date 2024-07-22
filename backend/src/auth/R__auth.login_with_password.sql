@@ -108,7 +108,6 @@ returns table (
 )
 language sql as 'select status, name_identifier, name from auth.login_with_password_internal(_email, _password, now());';
 
-
 call sys.annotate(
     'auth.login_with_password', 
     'HTTP POST /auth/login',

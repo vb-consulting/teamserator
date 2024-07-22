@@ -1,4 +1,4 @@
-@host=https://localhost:5000
+@host=http://localhost:5000
 
 // function auth.login_with_password(
 //     _email text,
