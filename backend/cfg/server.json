@@ -1,19 +1,10 @@
-/***********************************************
-
-Backend server configuration: 
-
-This file is used by the NpgsqlRest server to configure NpgsqlRest middleware server.
-
-It overrides the default configuration in appsettings.json and sets the default project configuration.
-
-***********************************************/
 {
   "ConnectionStrings": {
-    "Default": "Host=docker.host.internal;Port=5432;Database=teamserator_db;Username=teamserator_usr;Password=teamserator_usr"
+    "Default": "Host=docker.host.internal;Port=5432;Database=teamserator_db;"
   },
 
   "ApplicationName": "teamserator",
-  "EnvironmentName": "Development",
+  "EnvironmentName": "Production",
   "Urls": "http://0.0.0.0:5000/",
 
   "ConnectionSettings": {
@@ -24,7 +15,8 @@ It overrides the default configuration in appsettings.json and sets the default 
 
   "Auth": {
     "CookieAuth": true,
-    "BearerTokenAuth": false
+    "BearerTokenAuth": false,
+    "CookieName": "teamserator"
   },
 
   "Log": {
@@ -38,15 +30,16 @@ It overrides the default configuration in appsettings.json and sets the default 
 
   "StaticFiles": {
     "Enabled": true,
-    "RootPath": "./wwwroot"
+    "RootPath": "./wwwroot",
+    "AnonymousPaths": [ "*" ]
   },
 
   "NpgsqlRest": {
     "ConnectionName": "Default",
-    "CommentsMode": "OnlyWithHttpTag",
+    "ExcludeSchemas": [ "public", "sys" ],
 
-    "LogEndpointCreatedInfo": false,
-    "LogAnnotationSetInfo": false,
+    "LogEndpointCreatedInfo": true,
+    "LogAnnotationSetInfo": true,
     "LogConnectionNoticeEvents": true,
     "LogCommands": false,
     "LogCommandParameters": false,

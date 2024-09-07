@@ -1,21 +1,17 @@
-/***********************************************
-
-Backend server development configuration: 
-
-This configuration sets up development environment for the NpgsqlRest middleware server that generates TypeScript and HTTP files.
-
-It overrides the server configuration in appsettings-server.json
-
-***********************************************/
 {
   "ConnectionStrings": {
-    "Default": "Host=127.0.0.1;Port=5432;Database=teamserator_db;Username=teamserator_usr;Password=teamserator_usr"
+    // set your connection string ion local.json
   },
 
+  "EnvironmentName": "Development",
   "Urls": "http://localhost:5000/",
 
   "ConnectionSettings": {
     "UseEnvironmentConnection": false
+  },
+
+  "Config": {
+    "ExposeAsEndpoint": "/config/"
   },
 
   "Log": {
@@ -29,9 +25,6 @@ It overrides the server configuration in appsettings-server.json
   },
 
   "NpgsqlRest": {
-    "LogEndpointCreatedInfo": false,
-    "LogAnnotationSetInfo": false,
-    "LogConnectionNoticeEvents": true,
     "LogCommands": true,
     "LogCommandParameters": true,
 
@@ -50,7 +43,8 @@ It overrides the server configuration in appsettings-server.json
       "ImportParseQueryFrom": "$api/_url",
       "IncludeParseUrlParam": true,
       "IncludeParseRequestParam": true,
-      "SkipSchemas": ["pages"]
+      "SkipSchemas": ["pages"],
+      "UseRoutineNameInsteadOfEndpoint": true
     }
   }
 }

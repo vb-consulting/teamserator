@@ -50,7 +50,13 @@
 // Icons
 @import "../../../node_modules/bootstrap-icons/font/bootstrap-icons";
 
-
+body {
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: normal;
+    line-height: 24px;
+    font-family: Metropolis,"Avenir Next","Helvetica Neue",Arial,sans-serif;
+}
 
 //
 // custom styles
@@ -65,22 +71,8 @@
 .fs-larger {
     font-size: larger;
 }
-.btn-smaller {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-.cursor-default {
-    cursor: default;
-}
 
-body {
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: normal;
-    line-height: 24px;
-    font-family: Metropolis,"Avenir Next","Helvetica Neue",Arial,sans-serif;
-}
-
+/*
 input, input:focus, select, select:focus {
     box-shadow: none !important;
 }
@@ -176,3 +168,4 @@ body.dark .search-mark:not(.active) {
     padding: 0;
     color: var(--bs-black);
 }
+*/

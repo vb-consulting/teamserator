@@ -1,7 +1,7 @@
 ﻿const path = require("path");
 const { parseJsonWithComments } = require("./utils");
 
-const serverConfig = parseJsonWithComments("./backend/cfg/appsettings-server.json");
+const serverConfig = parseJsonWithComments("./backend/cfg/server.json");
 const rootPath = serverConfig.StaticFiles.RootPath;
 const srcDir = "./frontend/src/";
 const assetsDir = path.join(srcDir, "assets/");
@@ -20,5 +20,5 @@ module.exports = {
     iconTypesFileName: path.join(srcDir, "app/lib/_icons.d.ts"),
     styleDir: path.join(srcDir, "style/"),
     styleName: "style", // without extension css or scss
-    buildIdCustomHeaderConfigFile: "./backend/cfg/appsettings-build-id-header.json"
+    buildIdCustomHeaderConfigFile: "./backend/cfg/build-id-header.json"
 }

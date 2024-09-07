@@ -99,7 +99,12 @@ The directory structure:
 - `upgrade` - upgrade NPM packages.
 - `audit` - audit NPM packages.
 - `postinstall` - postinstallation script.
-- `start` - starts `NpgsqlRest` middleware server by using these configurations: default, server, build id headers (optional), development, local (optional).
+
+- `dev` - starts `NpgsqlRest` middleware server by using these configurations: server, build id headers (optional), development and local (optional).
+- `start` - same as `dev`.
+- `server` - starts `NpgsqlRest` middleware server by using these configurations: server, build id headers (optional).
+- `version` - show `NpgsqlRest` version.
+ 
 - `build` - builds all frontend files in parallel.
 - `build-index` - build index page and styles.
 - `build-admin` - build admin page and styles.
@@ -108,6 +113,7 @@ The directory structure:
 - `watch-admin` - build admin page and styles with map files and watch for changes.
 - `scss` - build styles only.
 - `scss-watch` - build styles only with map files and watch for changes.
+  
 - `data` - open the backend source directory with the azuredatastudio (recommended).
 - `up` - run database migrations up.
 - `up-list` - list available database migrations.
@@ -176,7 +182,7 @@ Unpacking objects: 100% (46/46), 78.31 KiB | 1.57 MiB/s, done.
 
 Application is already configured to access PostgreSQL on localhost using port 5432, database `teamserator_db` and user `teamserator_usr`.
 
-If you happen to have a different setup, just create a new local configuration named `/backend/cfg/appsettings-local.json` with the following content:
+If you happen to have a different setup, just create a new local configuration named `/backend/cfg/local.json` with the following content:
 
 ```json
 {
@@ -216,13 +222,13 @@ $ PGPASSWORD=postgres PGUSER=postgres npm run up
 $ PGPASSWORD=postgres PGUSER=postgres npm run test
 ```
 
-5) Run migrations up: `npm run up`
+1) Run migrations up: `npm run up`
 
-6) Run build to build static files (JS and CSS in the `wwwroot`): `npm run build`
+2) Run build to build static files (JS and CSS in the `wwwroot`): `npm run build`
 
-7) Start the application `npm run start`
+3) Start the application `npm run start`
 
-8) Navigate to the URL.
+4) Navigate to the URL.
 
 ## Running From Docker
 

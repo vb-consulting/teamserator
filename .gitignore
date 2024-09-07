@@ -131,6 +131,7 @@ dist
 
 # ignore local config files
 *-local*
+*local.*
 *local-*
 
 # wwwroot if front end build directory
@@ -140,4 +141,4 @@ wwwroot
 scrap
 
 # ignore build id header file
-appsettings-build-id-header.json
+build-id-header.json
